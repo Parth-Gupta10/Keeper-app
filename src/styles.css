@@ -5,9 +5,12 @@
 }
 html {
   font-family: "Montserrat", sans-serif;
+  position: relative;
+  min-height: 100%;
 }
 body {
   background: #eee;
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
 }
 
 header {
@@ -57,8 +60,9 @@ footer p {
 
 .note button {
   position: relative;
+  background: transparent;
   float: right;
-  margin-right: 10px;
+  margin-right: 5px;
   color: #f5ba13;
   border: none;
   width: 36px;
@@ -67,17 +71,17 @@ footer p {
   outline: none;
 }
 
-form {
+form.create-note {
   position: relative;
-  width: 50%;
+  width: 40%;
   margin: 30px auto 20px auto;
   background: #fff;
   padding: 15px;
   border-radius: 7px;
   box-shadow: 0 1px 5px rgb(138, 137, 137);
 }
-form input,
-form textarea {
+form.create-note input,
+form.create-note textarea {
   width: 100%;
   border: none;
   padding: 4px;
@@ -86,7 +90,7 @@ form textarea {
   font-family: inherit;
   resize: none;
 }
-form button {
+form.create-note button {
   position: absolute;
   right: 18px;
   bottom: -18px;
@@ -102,7 +106,7 @@ form button {
 }
 
 @media screen and (max-width: 450px) {
-  form{
+  form.create-note{
     width: 90%;
   }
 
