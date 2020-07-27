@@ -13,7 +13,7 @@ body {
   background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
 }
 
-header {
+.navbar {
   background-color: #f5ba13;
   width: 100%;
   margin: auto 0;
@@ -21,10 +21,24 @@ header {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 
-header h1 {
+.navbar-brand {
   color: #fff;
   font-family: "McLaren", cursive;
+  font-size: 2rem;
   font-weight: 200;
+}
+
+.navbar-nav {
+  padding-right: 25px;
+}
+
+.nav-link{
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.navbar-link{
+  margin-right: 10px;
 }
 
 footer {
