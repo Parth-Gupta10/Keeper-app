@@ -60,6 +60,18 @@ export default function SignUp() {
     value.firebase
     .registerUser(input.email, input.password)
     .then(() => {
+      value.firebase
+      .updateUserName(input.firstName)
+      .catch(err => {
+        console.log(err);
+      })
+    })
+    .then(() => {
+      value.firebase
+      .addUserToDB(input.firstName, input.lastName, input.email)
+      .catch((err) => console.log(err))
+    })
+    .then(() => {
       setInput({
         firstName: '',
         lastName: '',

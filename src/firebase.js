@@ -1,6 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
-import 'firebase/firebase-firestore'
+import 'firebase/firebase-firestore';
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -20,6 +20,7 @@ class Firebase {
     this.db = app.firestore();
   }
 
+  // Auth API
   registerUser = (email, password) => {
     console.log('user registered');
     return this.auth.createUserWithEmailAndPassword(email, password);
@@ -40,10 +41,36 @@ class Firebase {
     return this.auth.sendPasswordResetEmail(email);
   }
 
-  updatePassword = (password) => {
-    console.log('updated user');
-    return this.auth.currentUser.updatePassword(password);
+  updateUserName = (name) => {
+    console.log('updated username');
+    return this.auth.currentUser.updateProfile({
+      displayName: name
+    });
   }
+
+  // User DB API
+  addUserToDB = (firstName, lastName, email) => {
+    if (this.auth.currentUser != null) {
+      console.log('user added to database');
+      return this.db.doc(`users/${this.auth.currentUser.uid}`).set({
+        firstName: firstName,
+        lastName: lastName,
+        email: email
+      })
+    }
+  }
+
+  addNote = (allNotes) => {
+    console.log('notes added: ', allNotes);
+    return this.db.doc(`notes/${this.auth.currentUser.uid}`).set({
+      note: allNotes
+    })
+  }
+
+  getNotes = () => {
+    return this.db.doc(`notes/${this.auth.currentUser.uid}`).get()
+  }
+
 }
 
 export default new Firebase();
