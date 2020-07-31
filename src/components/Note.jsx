@@ -1,7 +1,10 @@
 import React from "react";
 
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.bubble.css';
+
 function Note(props) {
-  
+
   function handleClick() {
     props.onDelete(props.id);
   }
@@ -9,7 +12,12 @@ function Note(props) {
   return (
     <div className="note">
       <h1>{props.title}</h1>
-      <p>{props.content}</p>
+        <ReactQuill
+          theme="bubble"
+          name="content"
+          value={props.content}
+          readOnly
+        />
       <button onClick={handleClick}>
         <i className="fas fa-trash"></i>
       </button>

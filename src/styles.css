@@ -14,7 +14,7 @@ html {
 }
 body {
   background: #eee;
-  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+  background-image: url("./gplay-texture.png");
   min-height: 100%;
 }
 
@@ -113,7 +113,7 @@ form.create-note textarea {
   font-family: inherit;
   resize: none;
 }
-form.create-note button {
+form.create-note .addBtn {
   position: absolute;
   right: 18px;
   bottom: -18px;
@@ -131,6 +131,12 @@ form.create-note button {
 /* Loading Spinner  */
 .MuiCircularProgress-colorPrimary {
   color: #f5ba13 !important;
+}
+
+/* Editor */
+.ql-tooltip {
+  background-color: #d49d00 !important;
+  border-radius: 20px !important;
 }
 
 @media screen and (max-width: 450px) {
