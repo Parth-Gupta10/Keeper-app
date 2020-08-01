@@ -60,14 +60,16 @@ class Firebase {
     }
   }
 
-  addNote = (allNotes) => {
+  addNoteToDB = (allNotes, allImpNotes) => {
     console.log('notes added: ', allNotes);
+    console.log('imp notes added: ', allImpNotes);
     return this.db.doc(`notes/${this.auth.currentUser.uid}`).set({
+      impNote: allImpNotes,
       note: allNotes
     })
   }
 
-  getNotes = () => {
+  getNotesFromDB = () => {
     return this.db.doc(`notes/${this.auth.currentUser.uid}`).get()
   }
 

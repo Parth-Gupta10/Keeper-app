@@ -23,62 +23,121 @@ const NoteList = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [notes, setNotes] = useState([]);
 
+  const [impNotes, setImpNotes] = useState([]);
+
   useEffect(() => {
     let tempNotes = [];
+    let tempImpNotes = [];
 
-    value.firebase.getNotes()
+    value.firebase.getNotesFromDB()
     .then((doc) => {
       if (doc.exists) {
         doc.data().note.forEach((item, i) => {
           tempNotes.push(item);
         });
 
+        doc.data().impNote.forEach((item, i) => {
+          tempImpNotes.push(item);
+        });
+
         console.log('tempNotes: ', tempNotes );
+        console.log('tempImpNotes: ', tempImpNotes);
       } else {
         console.log('No such doc exists');
       }
     })
     .then(() => {
       setNotes(tempNotes);
+      setImpNotes(tempImpNotes);
       setIsLoading(false);
-      console.log('notes: ', notes);
     })
-    .catch(err => console.log(err));
+    .catch((err) => {
+      if (err.toString().indexOf("FirebaseError: Failed to get document because the client is offline.") >= 0) {
+        console.log('No internet Connection');
+      } else {
+        console.log(err);
+      }
+    });
 
   }, [])
 
-  function addNote(newNote) {
-    setNotes(prevNotes => {
-      let allNotes = [
-        ...prevNotes,
-        newNote
-      ];
-      return allNotes
-    })
+  function addNote(newNote, isImp) {
+    console.log(isImp);
+
+    if (isImp) {
+      setImpNotes(prevNotes => {
+        let allImpNotes = [
+          ...prevNotes,
+          newNote
+        ];
+        return allImpNotes
+      })
+
+    } else {
+      setNotes(prevNotes => {
+        let allNotes = [
+          ...prevNotes,
+          newNote
+        ];
+        return allNotes
+      })
+    }
   }
 
-  function deleteNote(id) {
-    setNotes(prevNotes => {
-      return prevNotes.filter((noteItem, index) => {
-        return index !== id;
+  function deleteNote(id, isImp) {
+    if (isImp) {
+      setImpNotes(prevNotes => {
+        return prevNotes.filter((noteItem, index) => {
+          return index !== id;
+        });
       });
-    });
+
+    } else {
+
+      setNotes(prevNotes => {
+        return prevNotes.filter((noteItem, index) => {
+          return index !== id;
+        });
+      });
+    }
+  }
+
+  function impNote(id, isImp) {
+    if (isImp) {
+      setNotes(prevNotes => {
+        return [
+          ...prevNotes,
+          impNotes[id]
+        ]
+      })
+      deleteNote(id, isImp);
+
+    } else {
+
+      setImpNotes(prevNotes => {
+        return [
+          ...prevNotes,
+          notes[id]
+        ]
+      })
+      deleteNote(id, isImp);
+    }
   }
 
   useEffect(() => {
-    if (notes.length > 0) {
+    if (notes.length > 0 || impNotes.length > 0) {
       value.firebase
-      .addNote(notes)
+      .addNoteToDB(notes, impNotes)
       .catch(err => console.log(err))
     }
 
     if (notes.length === 0 && !isLoading) {
       value.firebase
-      .addNote([])
+      .addNoteToDB([], impNotes)
       .catch(err => console.log(err))
     }
 
-  }, [notes]);
+  }, [notes, impNotes]);
 
   if (isLoading) {
 
@@ -94,6 +153,21 @@ const NoteList = (props) => {
       <>
       < CreateArea onAdd = {addNote} />
       {
+        impNotes.map((noteItem, index) => {
+          return (
+            <Note
+              key={index}
+              id={index}
+              title={noteItem.title}
+              content={noteItem.content}
+              onDelete={deleteNote}
+              onImp={impNote}
+              isImp={true}
+            />
+          )
+        })
+      }
+      {
         notes.map((noteItem, index) => {
           return (
             <Note
@@ -102,7 +176,9 @@ const NoteList = (props) => {
               title={noteItem.title}
               content={noteItem.content}
               onDelete={deleteNote}
-              />
+              onImp={impNote}
+              isImp={false}
+            />
           );
         })
       }

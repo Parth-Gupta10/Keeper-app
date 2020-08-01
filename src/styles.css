@@ -85,7 +85,6 @@ footer p {
   position: relative;
   background: transparent;
   float: right;
-  margin-right: 5px;
   color: #f5ba13;
   border: none;
   width: 36px;
@@ -128,6 +127,22 @@ form.create-note .addBtn {
   outline: none;
 }
 
+form.create-note .impBtn {
+  position: absolute;
+  right: -7px;
+  top: -20px;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.7rem;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  outline: none;
+  background: transparent;
+  color: #f5ba13;
+  transform: rotate(25deg) !important;
+}
+
 /* Loading Spinner  */
 .MuiCircularProgress-colorPrimary {
   color: #f5ba13 !important;
@@ -137,6 +152,10 @@ form.create-note .addBtn {
 .ql-tooltip {
   background-color: #d49d00 !important;
   border-radius: 20px !important;
+}
+
+.ql-editor {
+  font-size: 0.9rem !important;
 }
 
 @media screen and (max-width: 450px) {

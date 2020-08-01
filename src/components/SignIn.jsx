@@ -69,6 +69,8 @@ function SignIn(props) {
         setError('The password entered is wrong')
       } else if (error.code === 'auth/user-not-found') {
         setError('The email is not registered')
+      } else if (error.code === 'auth/too-many-requests') {
+        setError(error.message)
       } else {
         setError('Something went wrong, try again later')
       }
@@ -88,7 +90,7 @@ function SignIn(props) {
       </div>
     );
   } else {
-    
+
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
