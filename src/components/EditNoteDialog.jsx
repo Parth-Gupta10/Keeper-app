@@ -35,9 +35,11 @@ const inputStyle = {
   border: "none",
   padding: "4px",
   outline: "none",
-  fontSize: "1.2em",
+  fontSize: "1.1em",
   fontFamily: 'inherit',
   resize: "none",
+  backgroundColor: "cornsilk",
+
 }
 
 export default function FormDialog(props) {
@@ -47,6 +49,8 @@ export default function FormDialog(props) {
     content: props.content
   });
 
+  const [isDisabled, setIsDisabled] = useState(true)
+
   useEffect(() => {
     setNote({
       title: props.title,
@@ -54,7 +58,7 @@ export default function FormDialog(props) {
     })
 
     setHtml(props.content)
-  }, [])
+  }, [props.content, props.title, props.open])
 
   function handleChangeTitle(event) {
     const { value } = event.target;
@@ -87,44 +91,59 @@ export default function FormDialog(props) {
     props.handleClose()
   }
 
+  useEffect(() => {
+    if (props.title === note.title && props.content === note.content) {
+      setIsDisabled(true)
+    } else {
+      setIsDisabled(false)
+    }
+  }, [note])
+
   var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
   return (
     <div className="editNoteDialog">
       <Dialog open={props.open} onClose={props.handleClose} aria-labelledby="form-dialog-title" fullWidth={true}
         maxWidth={w < 550 ? 'md' : 'sm'}>
-        <DialogTitle id="form-dialog-title">Edit Note</DialogTitle>
+        <DialogTitle id="form-dialog-title" style={{color: 'Brown'}}>Edit Note</DialogTitle>
         <DialogContent>
-          <input
-            name="title"
-            onChange={handleChangeTitle}
-            value={note.title}
-            placeholder="Title"
-            style={inputStyle}
-          />
+
 
           <div className="tooltip-container-laptop">
-          </div>
+            <label htmlFor='#title' style={{color: 'darkgoldenrod', fontWeight: '600'}}> Enter new Title: </label>
+            <input
+              id="title"
+              name="title"
+              onChange={handleChangeTitle}
+              value={note.title}
+              placeholder="Title"
+              style={inputStyle}
+            />
 
-          <ReactQuill
-            theme="bubble"
-            onChange={handleChangeEditor}
-            name="content"
-            value={editorHtml}
-            modules={modules}
-            formats={formats}
-            bounds={w < 550 ? '.tooltip-container-mobile' : '.tooltip-container-laptop'}
-            placeholder="Edit a note..."
-          />
+          <label htmlFor='#content' style={{color: 'darkgoldenrod', fontWeight: '600'}}> Enter new Content: </label>
+
+            <ReactQuill
+              id="content"
+              theme="bubble"
+              onChange={handleChangeEditor}
+              name="content"
+              value={editorHtml}
+              modules={modules}
+              formats={formats}
+              bounds={w < 550 ? '.tooltip-container-laptop' : '.tooltip-container-laptop'}
+              placeholder="Edit a note..."
+              style={{backgroundColor: "cornsilk"}}
+            />
+          </div>
 
           <div className="tooltip-container-mobile"/>
 
         </DialogContent>
         <DialogActions>
-          <Button onClick={props.handleClose} color="primary">
+          <Button onClick={props.handleClose} style={{color: '#ce7014'}}>
             Cancel
           </Button>
-          <Button onClick={submitNote} color="primary">
+          <Button onClick={submitNote} style={{color: '#ce7014'}} disabled={isDisabled}>
             Save Changes
           </Button>
         </DialogActions>

@@ -22,6 +22,11 @@ body {
   min-height: 100%;
 }
 
+button:disabled {
+  cursor: not-allowed !important;
+  color: rgba(0, 0, 0, 0.26) !important;
+}
+
 .navbar {
   background-color: #f5ba13;
   width: 100%;
@@ -170,8 +175,8 @@ form.create-note .impBtn {
 }
 
 @media screen and (max-width: 500px) {
-  .MuiDialog-root .ql-tooltip.ql-flip {
-    top: 0 !important;
+  .MuiDialog-root .quill {
+    margin-top: 5px;
   }
 
   form.create-note .impBtn {
