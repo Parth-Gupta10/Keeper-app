@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import DialogBox from './DialogBox';
+import EditNoteDialog from './EditNoteDialog';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
@@ -7,7 +8,16 @@ import 'react-quill/dist/quill.bubble.css';
 function Note(props) {
 
   const [open, setOpen] = useState(false);
-  const [agree, setAgree] = useState(false)
+  const [agree, setAgree] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
+
+  const handleClickOpenEdit = () => {
+    setOpenEdit(true);
+  };
+
+  const handleCloseEdit = () => {
+    setOpenEdit(false);
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -61,6 +71,22 @@ function Note(props) {
       <button onClick={handleClick} style={{marginTop: '2.1px'}}>
         <i className="fas fa-thumbtack"></i>
       </button>
+
+      <button onClick={handleClickOpenEdit}>
+        <i className="fas fa-edit"></i>
+      </button>
+
+      <EditNoteDialog
+        open={openEdit}
+        handleClickOpen={handleClickOpenEdit}
+        handleClose={handleCloseEdit}
+        id={props.id}
+        content={props.content}
+        title={props.title}
+        isImp={props.isImp}
+        onAdd={props.addNote}
+        onDelete={props.onDelete}
+      />
     </div>
   );
 }

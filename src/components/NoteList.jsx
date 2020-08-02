@@ -163,6 +163,7 @@ const NoteList = (props) => {
               onDelete={deleteNote}
               onImp={impNote}
               isImp={true}
+              addNote={addNote}
             />
           )
         })
@@ -178,6 +179,7 @@ const NoteList = (props) => {
               onDelete={deleteNote}
               onImp={impNote}
               isImp={false}
+              addNote={addNote}
             />
           );
         })

@@ -129,7 +129,7 @@ form.create-note .addBtn {
 
 form.create-note .impBtn {
   position: absolute;
-  right: -7px;
+  right: -15px;
   top: -20px;
   border: none;
   border-radius: 50%;
@@ -158,6 +158,27 @@ form.create-note .impBtn {
   font-size: 0.9rem !important;
 }
 
+/* Dialog Box */
+.MuiPaper-rounded {
+  border-radius: 14px !important;
+}
+
+.tooltip-container {
+  width: 100%;
+  border: none;
+  background: transparent;
+}
+
+@media screen and (max-width: 500px) {
+  .MuiDialog-root .ql-tooltip.ql-flip {
+    top: 0 !important;
+  }
+
+  form.create-note .impBtn {
+    width: 30px;
+  }
+}
+
 @media screen and (max-width: 450px) {
   form.create-note{
     width: 90%;
@@ -165,5 +186,13 @@ form.create-note .impBtn {
 
   .note{
     width: 90%;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  form.create-note .impBtn {
+    width: 20px;
+    right: -5px;
+    top: -17px;
   }
 }
