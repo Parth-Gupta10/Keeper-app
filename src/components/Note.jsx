@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import DialogBox from './DialogBox';
 import EditNoteDialog from './EditNoteDialog';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
@@ -57,9 +58,11 @@ function Note(props) {
         readOnly
       />
 
-      <button onClick={handleClickOpen}>
-        <i className="fas fa-trash"></i>
-      </button>
+      <Tooltip title="Delete">
+        <button onClick={handleClickOpen}>
+          <i className="fas fa-trash"></i>
+        </button>
+      </Tooltip>
 
       <DialogBox
         open={open}
@@ -68,13 +71,17 @@ function Note(props) {
         title={props.title}
       />
 
-      <button onClick={handleClick} style={{marginTop: '2.1px'}}>
-        <i className="fas fa-thumbtack"></i>
-      </button>
+    <Tooltip title={!props.isImp ? "Mark Important" : "Unmark Important"}>
+        <button onClick={handleClick} style={{marginTop: '2.1px'}}>
+          <i className="fas fa-thumbtack"></i>
+        </button>
+      </Tooltip>
 
-      <button onClick={handleClickOpenEdit}>
-        <i className="fas fa-edit"></i>
-      </button>
+      <Tooltip title="Edit">
+        <button onClick={handleClickOpenEdit}>
+          <i className="fas fa-edit"></i>
+        </button>
+      </Tooltip>
 
       <EditNoteDialog
         open={openEdit}

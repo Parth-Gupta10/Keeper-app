@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Fab from "@material-ui/core/Fab";
 import Zoom from "@material-ui/core/Zoom";
 import Snackbar from "./Snackbar";
+import Tooltip from '@material-ui/core/Tooltip';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
@@ -115,9 +116,11 @@ function CreateArea(props) {
         )}
 
         <Zoom in={isExpanded}>
-          <button onClick={(e) => {makeImp(e); handleClick();}} className="impBtn">
-            <i className="fas fa-thumbtack"></i>
-          </button>
+          <Tooltip title={!isImp ? "Mark Important" : "Unmark Important"}>
+            <button onClick={(e) => {makeImp(e); handleClick();}} className="impBtn">
+              <i className="fas fa-thumbtack"></i>
+            </button>
+          </Tooltip>
         </Zoom>
 
         <Snackbar
@@ -139,11 +142,14 @@ function CreateArea(props) {
           placeholder="Take a note..."
         />
 
-        <Zoom in={isExpanded} className="addBtn">
-          <Fab onClick={submitNote}>
-            <i className="fas fa-plus"></i>
-          </Fab>
-        </Zoom>
+        <Tooltip title="Add">
+          <Zoom in={isExpanded} className="addBtn">
+            <Fab onClick={submitNote}>
+              <i className="fas fa-plus"></i>
+            </Fab>
+          </Zoom>
+        </Tooltip>
+
       </form>
     </div>
   );
