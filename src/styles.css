@@ -14,7 +14,7 @@ html {
 }
 body {
   background: #eee;
-  background-image: url("./gplay-texture.png");
+  background-image: url("./images/gplay-texture.png");
   min-height: 100%;
 }
 
@@ -31,15 +31,15 @@ button:disabled {
   background-color: #f5ba13;
   width: 100%;
   margin: auto 0;
-  padding: 16px 32px;
+  padding: 10px 32px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 
 .navbar-brand {
   color: #fff;
-  font-family: "McLaren", cursive;
-  font-size: 2rem;
-  font-weight: 200;
+  font-family: 'Gochi Hand', cursive;
+  font-size: 2.5rem;
+  padding: 0;
 }
 
 .navbar-nav {
@@ -55,17 +55,6 @@ button:disabled {
   margin-right: 10px;
 }
 
-footer {
-  position: absolute;
-  text-align: center;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem;
-}
-
-footer p {
-  color: #ccc;
-}
 .note {
   background: #fff;
   border-radius: 10px;
@@ -174,6 +163,126 @@ form.create-note .impBtn {
   background: transparent;
 }
 
+/* Home Page CSS */
+
+/* Home Section */
+#home {
+  padding: 4.5% 0;
+}
+
+.homeImgCol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homeHeadingCol {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  flex-direction: column;
+}
+
+.homeHeadingCol h1 {
+  font-size: 2.9rem;
+}
+
+.mainBtn {
+  font-size: 0.9rem;
+  width: 50%;
+  margin: 1% 3% 2% 0;
+}
+
+/* Feature Section */
+.yellowBackground{
+  background-color: #f5ba13;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.flex-equal > * {
+  -ms-flex: 1;
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .flex-md-equal > * {
+    -ms-flex: 1;
+    flex: 1;
+  }
+
+}
+
+/* Format Section */
+#format {
+  padding: 3% 0;
+  text-align: center;
+}
+
+#format h1 {
+  margin-bottom: 1rem;
+}
+
+.formatBtnCol li {
+  margin-bottom: 1rem;
+}
+
+.formatBtnCol span {
+  min-width: 30px;
+  height: 30px;
+  background-color: #f5ba13;
+  color: white;
+  padding: 2px 5px;
+  margin-right: 5px;
+}
+
+/* CTA Section */
+#cta{
+  text-align: center;
+  background-color: #f5ba13;
+  color: white;
+  padding: 4% 10%;
+}
+
+.download-button {
+  font-size: 0.9rem;
+  width: 30%;
+  margin: 1% 3% 2% 0;
+}
+
+/* Footer */
+#footer{
+  text-align: center;
+  color: white;
+  padding: 3% 0 2% 0;
+  background-color: #000000;
+}
+
+a.social {
+  text-decoration: none;
+}
+
+.social{
+  margin: 0 15px 15px 0;
+  cursor: pointer;
+  color: white;
+  transition: all 0.5s ease;
+}
+
+.social:hover {
+  transform: scale(1.4);
+}
+
+@media screen and (max-width: 800px) {
+  
+  .homeImgCol img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .MuiDialog-root .quill {
     margin-top: 5px;
@@ -191,6 +300,32 @@ form.create-note .impBtn {
 
   .note{
     width: 90%;
+  }
+
+  .homeHeadingCol h1 {
+    font-size: 2.5rem;
+  }
+
+  .mainBtn {
+    width: 80%;
+  }
+
+  .download-button {
+    width: 100%;
+  }
+
+  #format p {
+    padding: 0 !important;
+    text-align: left;
+    font-size: 1rem !important;
+  }
+
+  #footer, #cta, #format {
+    padding: 7% 2%;
+  }
+
+  .px-3 {
+    padding: 0 !important;
   }
 }
 

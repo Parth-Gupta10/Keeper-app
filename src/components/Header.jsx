@@ -13,6 +13,7 @@ function Header() {
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav ml-auto">
+          <a className="nav-item nav-link" href= "#features">Features</a>
           <Link className="nav-item nav-link" to="/notes">Your Notes</Link>
           {
             value.isUserAuth
