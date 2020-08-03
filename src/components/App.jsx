@@ -17,6 +17,7 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/keeper-app" component={Home} />
         <Route path='/notes'>
           {
             value.isUserAuth
