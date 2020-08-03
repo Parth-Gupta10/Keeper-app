@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/keeper-app/static/css/main.fc6f8b3c.chunk.css",
+    "main.js": "/keeper-app/static/js/main.597740d8.chunk.js",
+    "main.js.map": "/keeper-app/static/js/main.597740d8.chunk.js.map",
+    "runtime-main.js": "/keeper-app/static/js/runtime-main.8929710f.js",
+    "runtime-main.js.map": "/keeper-app/static/js/runtime-main.8929710f.js.map",
+    "static/css/2.d0b9e7a5.chunk.css": "/keeper-app/static/css/2.d0b9e7a5.chunk.css",
+    "static/js/2.0c47f629.chunk.js": "/keeper-app/static/js/2.0c47f629.chunk.js",
+    "static/js/2.0c47f629.chunk.js.map": "/keeper-app/static/js/2.0c47f629.chunk.js.map",
+    "index.html": "/keeper-app/index.html",
+    "precache-manifest.f21295603862e1740cd320c25a0e3132.js": "/keeper-app/precache-manifest.f21295603862e1740cd320c25a0e3132.js",
+    "service-worker.js": "/keeper-app/service-worker.js",
+    "static/css/2.d0b9e7a5.chunk.css.map": "/keeper-app/static/css/2.d0b9e7a5.chunk.css.map",
+    "static/css/main.fc6f8b3c.chunk.css.map": "/keeper-app/static/css/main.fc6f8b3c.chunk.css.map",
+    "static/js/2.0c47f629.chunk.js.LICENSE.txt": "/keeper-app/static/js/2.0c47f629.chunk.js.LICENSE.txt",
+    "static/media/access-anywhere-illustration.jpg": "/keeper-app/static/media/access-anywhere-illustration.62faadd4.jpg",
+    "static/media/format-illustration.png": "/keeper-app/static/media/format-illustration.42331116.png",
+    "static/media/important-illustration.jpg": "/keeper-app/static/media/important-illustration.66af99eb.jpg",
+    "static/media/notes-illustrations.jpg": "/keeper-app/static/media/notes-illustrations.e6146902.jpg",
+    "static/media/pass-protection-illustration.jpg": "/keeper-app/static/media/pass-protection-illustration.b405f389.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8929710f.js",
+    "static/css/2.d0b9e7a5.chunk.css",
+    "static/js/2.0c47f629.chunk.js",
+    "static/css/main.fc6f8b3c.chunk.css",
+    "static/js/main.597740d8.chunk.js"
+  ]
+}
