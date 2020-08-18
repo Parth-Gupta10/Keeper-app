@@ -1,3 +1,24 @@
+#Keeper app
+
+A simple Web app made using Firebase and ReactJs to store notes, also supports feature to format (style) content of note.
+[Try the app](https://parth-gupta10.github.io/Keeper-app/)
+
+## Features
+
+### Authentication using Firebase Auth
+![sign up demo](demo/signup.gif)
+
+![sign in demo](demo/signin.gif)
+
+### Style content
+![styling demo](demo/style-note.gif)
+
+### Store notes using Firestore
+![Store notes demo](demo/addOrDelete.gif)
+
+### Mark notes as Important
+![important demo](demo/important.gif)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
