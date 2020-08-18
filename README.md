@@ -1,4 +1,4 @@
-#Keeper app
+# Keeper app
 
 A simple Web app made using Firebase and ReactJs to store notes, also supports feature to format (style) content of note.
 [Try the app](https://parth-gupta10.github.io/Keeper-app/)
